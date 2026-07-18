@@ -19,7 +19,8 @@ pnpm build       # emit dist/ (ESM + .d.ts)
 
 ## What is built today
 
-Framework-agnostic, WAI-ARIA-correct **Tabs** and **Disclosure** patterns plus **design tokens**:
+Framework-agnostic, WAI-ARIA-correct behaviour primitives — **Tabs**, **Disclosure**,
+**Accordion**, **Menu button**, and **Dialog** — plus **design tokens**:
 
 - `createTabs` (`src/tabs.ts`) progressively enhances semantic markup into the WAI-ARIA Tabs
   pattern: roles + `aria-selected`/`aria-controls` wiring, a **roving tabindex** (single tab
@@ -29,19 +30,31 @@ Framework-agnostic, WAI-ARIA-correct **Tabs** and **Disclosure** patterns plus *
   and a region into the WAI-ARIA Disclosure pattern: `aria-expanded` on the trigger and
   `aria-controls` pointing at the region, whose `hidden` state stays in lock-step. Enter/Space
   activation comes from the platform button. Fully typed, no framework dependency.
+- `createAccordion` (`src/accordion.ts`) enhances a set of header buttons and panels into the
+  WAI-ARIA Accordion pattern: `aria-expanded` + `aria-controls` per header, panels as
+  `role="region"` labelled by their header, and **Down/Up/Home/End** focus movement between
+  headers. Single-expand by default, opt-in `multiple` for several open at once.
+- `createMenuButton` (`src/menu-button.ts`) enhances a trigger and list into the WAI-ARIA Menu
+  Button pattern: `aria-haspopup`/`aria-expanded`/`aria-controls` on the trigger, `role="menu"`
+  with `role="menuitem"` children, roving focus, **ArrowDown/ArrowUp/Home/End** navigation, and
+  **Escape**/outside-click dismissal that returns focus to the trigger.
+- `createDialog` (`src/dialog.ts`) enhances an element into a WAI-ARIA modal Dialog:
+  `role="dialog"` + `aria-modal`, initial focus into the dialog, a **focus trap** (Tab /
+  Shift+Tab cycle), **Escape** and `[data-dialog-close]` to close, focus returned to the prior
+  element, and the background made `inert` while open.
 - Design tokens (`tokens/tokens.css`) drive colour, spacing, radius, and focus. Every colour
   pair meets WCAG AA contrast in light and dark; focus rings are never removed; tab targets
   meet the 44px minimum.
-- Tests (19): ARIA state, keyboard behaviour, click, programmatic control, lifecycle,
-  malformed-markup errors, and automated `axe-core` scans (WCAG A/AA) for both patterns.
+- Tests (56): ARIA state, keyboard behaviour, click, programmatic control, lifecycle,
+  malformed-markup errors, and automated `axe-core` scans (WCAG A/AA) for every pattern.
   Automation is a floor — manual keyboard and screen-reader checks are documented, not replaced.
 
 The generally-useful patterns extract to the `block-a11y-pattern-lab` open-source repo.
 
 ## Documented boundary (not yet built)
 
-Additional patterns (Accordion, Menu button, Dialog), the WordPress block wrappers,
-a visual token playground, and the manual screen-reader test transcripts.
+The WordPress block wrappers, a visual token playground, and the manual screen-reader test
+transcripts.
 
 ## PCAAP
 
