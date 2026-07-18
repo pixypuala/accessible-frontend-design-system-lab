@@ -1,0 +1,83 @@
+/*
+ * Design tokens — the single source of truth for the visual system.
+ *
+ * Every colour pair here meets or exceeds WCAG AA contrast on its intended
+ * surface (see docs/accessibility). Components reference only these variables,
+ * never raw values, so light/dark and theming stay consistent by construction.
+ */
+
+:root {
+  /* Surfaces & text (light) */
+  --ds-color-surface: #ffffff;
+  --ds-color-surface-raised: #f6f7f9;
+  --ds-color-text: #14181f;         /* 15.8:1 on surface */
+  --ds-color-text-muted: #4a5460;   /* 7.3:1 on surface  */
+  --ds-color-border: #d7dbe0;
+  --ds-color-accent: #0b5d4e;       /* 6.2:1 on surface  */
+  --ds-color-accent-contrast: #ffffff;
+  --ds-color-focus: #1a6dff;
+
+  /* Spacing scale (0.25rem base) */
+  --ds-space-1: 0.25rem;
+  --ds-space-2: 0.5rem;
+  --ds-space-3: 1rem;
+  --ds-space-4: 1.5rem;
+  --ds-space-5: 2.5rem;
+
+  /* Radius & type */
+  --ds-radius-control: 0.375rem;
+  --ds-radius-surface: 0.5rem;
+  --ds-font-size-sm: 0.875rem;
+  --ds-font-size-md: 1rem;
+  --ds-line-height: 1.5;
+
+  /* Focus ring — never removed, only restyled */
+  --ds-focus-ring: 2px solid var(--ds-color-focus);
+  --ds-focus-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ds-color-surface: #14181f;
+    --ds-color-surface-raised: #1d232c;
+    --ds-color-text: #eef1f5;         /* 14.9:1 on dark surface */
+    --ds-color-text-muted: #a7b0bd;   /* 7.1:1 on dark surface  */
+    --ds-color-border: #333b46;
+    --ds-color-accent: #4fd1b5;       /* 8.4:1 on dark surface  */
+    --ds-color-accent-contrast: #0a1512;
+    --ds-color-focus: #78a9ff;
+  }
+}
+
+/* Tabs presentation, driven entirely by tokens. */
+[data-tablist] {
+  display: flex;
+  gap: var(--ds-space-1);
+  border-bottom: 1px solid var(--ds-color-border);
+}
+
+[data-tab] {
+  padding: var(--ds-space-2) var(--ds-space-3);
+  min-height: 44px; /* WCAG 2.5.5 target size */
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--ds-color-text-muted);
+  font-size: var(--ds-font-size-md);
+  cursor: pointer;
+}
+
+[data-tab][aria-selected='true'] {
+  color: var(--ds-color-accent);
+  border-bottom-color: var(--ds-color-accent);
+}
+
+[data-tab]:focus-visible,
+[data-tabpanel]:focus-visible {
+  outline: var(--ds-focus-ring);
+  outline-offset: var(--ds-focus-offset);
+}
+
+[data-tabpanel] {
+  padding: var(--ds-space-3) 0;
+}

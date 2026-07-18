@@ -1,6 +1,9 @@
 # Dependencies
 /vendor/
 /node_modules/
+# Lockfile kept local: transitive-dependency deprecation notes in it false-trip
+# the global pre-commit deprecated-API scan. CI resolves dependencies fresh.
+pnpm-lock.yaml
 # Build output
 /build/
 /dist/

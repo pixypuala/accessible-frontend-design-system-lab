@@ -1,0 +1,26 @@
+{
+  "name": "@pixypuala/accessible-frontend-design-system-lab",
+  "version": "0.1.0",
+  "description": "Accessible, framework-agnostic UI patterns and design tokens for WordPress blocks and beyond — built to WAI-ARIA authoring practices and tested with axe.",
+  "license": "GPL-2.0-or-later",
+  "type": "module",
+  "packageManager": "pnpm@9.0.0",
+  "files": ["dist", "src", "tokens"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/user-event": "^14.5.2",
+    "axe-core": "^4.10.0",
+    "jsdom": "^25.0.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

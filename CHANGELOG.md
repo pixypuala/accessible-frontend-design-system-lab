@@ -8,3 +8,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 - Repository scaffolding: governance files, docs, and CI skeleton.
+- Accessible WAI-ARIA Tabs pattern (createTabs): roles, roving tabindex, Arrow/Home/End keyboard nav, horizontal + vertical orientation.
+- Design tokens (tokens/tokens.css) with WCAG AA colour pairs (light + dark) and 44px targets.
+- 11 tests (vitest + jsdom) including an axe-core WCAG A/AA scan; strict TypeScript.
+- CI on Node 20 and 22 via pnpm/corepack.
