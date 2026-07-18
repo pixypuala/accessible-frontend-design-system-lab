@@ -19,24 +19,28 @@ pnpm build       # emit dist/ (ESM + .d.ts)
 
 ## What is built today
 
-A framework-agnostic, WAI-ARIA-correct **Tabs** pattern plus **design tokens**:
+Framework-agnostic, WAI-ARIA-correct **Tabs** and **Disclosure** patterns plus **design tokens**:
 
 - `createTabs` (`src/tabs.ts`) progressively enhances semantic markup into the WAI-ARIA Tabs
   pattern: roles + `aria-selected`/`aria-controls` wiring, a **roving tabindex** (single tab
   stop), and **Arrow/Home/End** keyboard navigation with automatic activation. Horizontal and
   vertical orientations. Fully typed, no framework dependency.
+- `createDisclosure` (`src/disclosure.ts`) progressively enhances a native `<button>` trigger
+  and a region into the WAI-ARIA Disclosure pattern: `aria-expanded` on the trigger and
+  `aria-controls` pointing at the region, whose `hidden` state stays in lock-step. Enter/Space
+  activation comes from the platform button. Fully typed, no framework dependency.
 - Design tokens (`tokens/tokens.css`) drive colour, spacing, radius, and focus. Every colour
   pair meets WCAG AA contrast in light and dark; focus rings are never removed; tab targets
   meet the 44px minimum.
-- Tests: ARIA state, keyboard behaviour, click, lifecycle, malformed-markup errors, and an
-  automated `axe-core` scan (WCAG A/AA). Automation is a floor — manual keyboard and
-  screen-reader checks are documented, not replaced.
+- Tests (19): ARIA state, keyboard behaviour, click, programmatic control, lifecycle,
+  malformed-markup errors, and automated `axe-core` scans (WCAG A/AA) for both patterns.
+  Automation is a floor — manual keyboard and screen-reader checks are documented, not replaced.
 
 The generally-useful patterns extract to the `block-a11y-pattern-lab` open-source repo.
 
 ## Documented boundary (not yet built)
 
-Additional patterns (Disclosure/Accordion, Menu button, Dialog), the WordPress block wrappers,
+Additional patterns (Accordion, Menu button, Dialog), the WordPress block wrappers,
 a visual token playground, and the manual screen-reader test transcripts.
 
 ## PCAAP
